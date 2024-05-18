@@ -34,13 +34,17 @@ ballcat:
   web:
     accesslog:
       enabled: true
-      max-body-length: 2048
       default-record-options:
         include-query-string: true
         include-request-body: true
         include-response-body: true
+        max-request-body-length: 2048
+        max-response-body-length: 2048
       rules:
         # 注意，这里规则取命中的第一个，所以 /** 要放在最后一个
+        - url-pattern: /system/user/avatar
+          record-options:
+              ignored: true
         - url-pattern: /swagger-ui/**
           record-options:
             ignored: true

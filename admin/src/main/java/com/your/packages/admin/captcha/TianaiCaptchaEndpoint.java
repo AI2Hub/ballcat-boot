@@ -26,12 +26,12 @@ public class TianaiCaptchaEndpoint {
 		if (StringUtils.isBlank(type)) {
 			type = CaptchaTypeConstant.SLIDER;
 		}
-		return imageCaptchaApplication.generateCaptcha(type);
+		return this.imageCaptchaApplication.generateCaptcha(type);
 	}
 
 	@PostMapping("/check")
 	public boolean checkCaptcha(@RequestParam("id") String id, @RequestBody ImageCaptchaTrack imageCaptchaTrack) {
-		return imageCaptchaApplication.matching(id, imageCaptchaTrack).isSuccess();
+		return this.imageCaptchaApplication.matching(id, imageCaptchaTrack).isSuccess();
 	}
 
 }

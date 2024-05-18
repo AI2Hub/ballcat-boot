@@ -1,5 +1,7 @@
 package com.your.packages.admin.captcha;
 
+import javax.servlet.http.HttpServletRequest;
+
 import cloud.tianai.captcha.spring.application.ImageCaptchaApplication;
 import cloud.tianai.captcha.spring.plugins.secondary.SecondaryVerificationApplication;
 import cn.hutool.core.text.CharSequenceUtil;
@@ -8,8 +10,6 @@ import org.ballcat.security.captcha.CaptchaValidateResult;
 import org.ballcat.security.captcha.CaptchaValidator;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * tianai 验证码的校验器
@@ -30,11 +30,11 @@ public class TianaiCaptchaValidator implements CaptchaValidator {
 			return CaptchaValidateResult.failure("captcha id can not be null");
 		}
 
-		if (!(sca instanceof SecondaryVerificationApplication)) {
+		if (!(this.sca instanceof SecondaryVerificationApplication)) {
 			return CaptchaValidateResult.failure("captcha must enable secondary verification");
 		}
 
-		boolean match = ((SecondaryVerificationApplication) sca).secondaryVerification(captchaId);
+		boolean match = ((SecondaryVerificationApplication) this.sca).secondaryVerification(captchaId);
 		return match ? CaptchaValidateResult.success() : CaptchaValidateResult.failure("captcha validate failure");
 	}
 

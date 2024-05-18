@@ -9,8 +9,6 @@ import cloud.tianai.captcha.resource.impl.DefaultResourceStore;
 import cloud.tianai.captcha.resource.impl.provider.ClassPathResourceProvider;
 import org.springframework.stereotype.Component;
 
-import static cloud.tianai.captcha.generator.impl.StandardSliderImageCaptchaGenerator.DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH;
-
 @Component
 public class TianaiCaptchaResourceStore extends DefaultResourceStore {
 
@@ -19,14 +17,14 @@ public class TianaiCaptchaResourceStore extends DefaultResourceStore {
 		// 滑块验证码 模板 (系统内置)
 		ResourceMap template1 = new ResourceMap("default", 4);
 		template1.put(SliderCaptchaConstant.TEMPLATE_ACTIVE_IMAGE_NAME, new Resource(ClassPathResourceProvider.NAME,
-				DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/1/active.png")));
+				StandardSliderImageCaptchaGenerator.DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/1/active.png")));
 		template1.put(SliderCaptchaConstant.TEMPLATE_FIXED_IMAGE_NAME, new Resource(ClassPathResourceProvider.NAME,
-				DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/1/fixed.png")));
+				StandardSliderImageCaptchaGenerator.DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/1/fixed.png")));
 		ResourceMap template2 = new ResourceMap("default", 4);
 		template2.put(SliderCaptchaConstant.TEMPLATE_ACTIVE_IMAGE_NAME, new Resource(ClassPathResourceProvider.NAME,
-				DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/2/active.png")));
+				StandardSliderImageCaptchaGenerator.DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/2/active.png")));
 		template2.put(SliderCaptchaConstant.TEMPLATE_FIXED_IMAGE_NAME, new Resource(ClassPathResourceProvider.NAME,
-				DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/2/fixed.png")));
+				StandardSliderImageCaptchaGenerator.DEFAULT_SLIDER_IMAGE_TEMPLATE_PATH.concat("/2/fixed.png")));
 		// 旋转验证码 模板 (系统内置)
 		ResourceMap template3 = new ResourceMap("default", 4);
 		template3.put(SliderCaptchaConstant.TEMPLATE_ACTIVE_IMAGE_NAME, new Resource(ClassPathResourceProvider.NAME,
